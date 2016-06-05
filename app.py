@@ -1,8 +1,8 @@
 from flask import Flask, request, render_template, redirect
-import logging
+# import logging
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+# logging.basicConfig(level=logging.DEBUG)
+# logger = logging.getLogger(__name__)
 
 app_lulu = Flask(__name__)
 
@@ -15,8 +15,8 @@ app_lulu.questions['Which fruit do you like best?'] = (
 app_lulu.questions['Do you like cupcakes?'] = ('yes', 'no', 'maybe')
 
 app_lulu.nquestions = len(app_lulu.questions)
-logger.info(app_lulu.questions)
-logger.info('NUMERO DOMANDE DA FARE: %s' % (app_lulu.nquestions))
+# logger.info(app_lulu.questions)
+# logger.info('NUMERO DOMANDE DA FARE: %s' % (app_lulu.nquestions))
 
 
 @app_lulu.route('/')
@@ -34,8 +34,8 @@ def index_lulu_function():
         app_lulu.vars['name'] = request.form['name_lulu']
         app_lulu.vars['age'] = request.form['age_lulu']
         # log
-        logger.info('INPUT - NAME: %s AGE: %s' %
-                    (app_lulu.vars['name'], app_lulu.vars['age']))
+        # logger.info('INPUT - NAME: %s AGE: %s' %
+                    # (app_lulu.vars['name'], app_lulu.vars['age']))
 
         # write
         f = open('Output//%s_%s.txt' %
@@ -43,7 +43,7 @@ def index_lulu_function():
         f.write('Name: %s\n' % (app_lulu.vars['name']))
         f.write('Age: %s\n' % (app_lulu.vars['age']))
 
-        logger.info('Successfully written in output folder')
+        # logger.info('Successfully written in output folder')
         f.close()
 
         return redirect('/main_lulu')
@@ -62,9 +62,9 @@ def next_lulu():
     q = app_lulu.questions.keys()[0]
     a1, a2, a3 = app_lulu.questions.values()[0]
 
-    logger.info('NUMERO DOMANDA: %s' % (n))
-    logger.info('DOMANDA: %s' % (q))
-    logger.info('RISPOSTE: %s, %s, %s' % (a1, a2, a3))
+    # logger.info('NUMERO DOMANDA: %s' % (n))
+    # logger.info('DOMANDA: %s' % (q))
+    # logger.info('RISPOSTE: %s, %s, %s' % (a1, a2, a3))
 
     app_lulu.currentq = q
 
@@ -80,8 +80,8 @@ def next_lulu2():
     f.write('%s\n\n' % (request.form['answer_from_layout_lulu']))
     f.close()
 
-    logger.info('DOMANDA DA CANCELLARE: %s' %
-                (str(app_lulu.questions[app_lulu.currentq])))
+    # logger.info('DOMANDA DA CANCELLARE: %s' %
+                # (str(app_lulu.questions[app_lulu.currentq])))
 
     del app_lulu.questions[app_lulu.currentq]
     return redirect('/main_lulu')
