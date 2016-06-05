@@ -1,4 +1,4 @@
-from app import app_lulu
+from app import app
 
 if __name__ == "__main__":
-    app_lulu.run(port=33507)
+    app.run(port=33507)
