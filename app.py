@@ -87,4 +87,4 @@ def next_lulu2():
     return redirect('/main_lulu')
 
 if __name__ == '__main__':
-    app_lulu.run(port=33507)
+    app_lulu.run()
