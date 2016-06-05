@@ -19,6 +19,11 @@ logger.info(app_lulu.questions)
 logger.info('NUMERO DOMANDE DA FARE: %s' % (app_lulu.nquestions))
 
 
+@app_lulu.route('/')
+def main_page_lulu():
+    return redirect('/index_lulu')
+
+
 @app_lulu.route('/index_lulu', methods=['GET', 'POST'])
 def index_lulu_function():
     num_question = app_lulu.nquestions
